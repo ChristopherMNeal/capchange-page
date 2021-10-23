@@ -13,13 +13,30 @@ function capChange(input) {
   return(inputArray.join(''));
 }
 
+window.onload = function() {
+  $("#title-change").text(capChange("capchange code"));
+  $("#header-change").text(capChange("make your text look like this!!"));
+  $("#textbox-change").text(capChange("please enter text here:"));
+  $("#submit-change").text(capChange("submit!"));
+  $("#reload-change").text(capChange("click here to reset the page"));
+}
+
 $(document).ready(function() {
   $("#form1").submit(function(event) {
     event.preventDefault();
-    const userInput = $("#text-input").val();
-
-    const userResult = capChange(userInput);
+    const userResult = capChange($("#text-input").val());
     $("#result-list").prepend("<li>" + userResult + "</li>");
+
+    $("#title-change").text(capChange("capchange code"));
+    $("#header-change").text(capChange("make your text look like this!!"));
+    $("#textbox-change").text(capChange("please enter text here:"));
+    $("#submit-change").text(capChange("submit!"));
+    $("#reload-change").text(capChange("click here to reset the page"));
+  });
+
+  $("#reload-change").click(function() {
+    $("#form1").val("");
+    window.location.reload();
   });
 });
 
