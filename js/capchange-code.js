@@ -1,25 +1,26 @@
-const userInput = $(document).ready(function() {
-  $("#form1").submit(function(event) {
-    return (this).val();
-  });
-});
-console.log(userInput);
-userInput = userInput.toLowerCase();
-let ary = [];
-for (let k = 0; k < userInput.length; k++) {
-  ary.push(userInput.charAt(k));
-}
-for (let j = 0; j < 3; j++) {
-	for (let i = 0; i < userInput.length; i++) {
-		if ((userInput.charAt(i) !== 'i') &&  (Math.random() < 0.4)) {
-			ary[i] = ary[i].toUpperCase();
-		}
-    if (ary[i] === ary[i + 1]) {
-    	ary[i] = ary [i].toLowerCase();
-      ary[i + 1] = ary[i + 1].toUpperCase();
+function capChange(input) {
+  input = input.toLowerCase();
+  let inputArray = input.split("");
+  for (let i = 0; i < input.length; i++) {
+    if ((input.charAt(i) !== 'i') &&  (Math.random() < 0.4)) {
+      inputArray[i] = inputArray[i].toUpperCase();
+    }
+    if (inputArray[i] === inputArray[i + 1]) {
+      inputArray[i] = inputArray[i].toLowerCase();
+      inputArray[i + 1] = inputArray[i + 1].toUpperCase();
     }
   }
-  alert(ary.join(''));
+  return(inputArray.join(''));
 }
+
+$(document).ready(function() {
+  $("#form1").submit(function(event) {
+    event.preventDefault();
+    const userInput = $("#text-input").val();
+
+    const userResult = capChange(userInput);
+    $("#result-list").prepend("<li>" + userResult + "</li>");
+  });
+});
 
 
