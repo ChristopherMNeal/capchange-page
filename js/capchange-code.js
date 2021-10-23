@@ -1,4 +1,9 @@
-userInput = prompt('Type what you want to see capchanged here:', 'My name is Ettie Spaghettiiiiiiiiiiiiiiiiiii and I am a can of noodles');
+const userInput = $(document).ready(function() {
+  $("#form1").submit(function(event) {
+    return (this).val();
+  });
+});
+console.log(userInput);
 userInput = userInput.toLowerCase();
 let ary = [];
 for (let k = 0; k < userInput.length; k++) {
